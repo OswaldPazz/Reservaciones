@@ -1090,15 +1090,15 @@
       status: 'Pendiente'
     });
 
-    let msg = `🍽️ *Nueva Reservación — Pazzesca*\n\n`;
-    msg += `👤 *Nombre:* ${nombre}\n`;
-    if (telefono) msg += `📱 *Teléfono:* ${telefono}\n`;
-    msg += `📅 *Fecha:* ${fechaTexto}\n`;
-    msg += `🕐 *Hora:* ${horaTexto}\n`;
-    msg += `👥 *Personas:* ${selectedPersonas}\n`;
-    if (selectedZona && selectedZona !== 'Sin preferencia') msg += `📍 *Zona:* ${selectedZona}\n`;
-    if (notas) msg += `📝 *Notas:* ${notas}\n`;
-    msg += `\n_Reservación pendiente de confirmación_`;
+    let msg = `*Nueva Reservacion - Pazzesca*\n\n`;
+    msg += `*Nombre:* ${nombre}\n`;
+    if (telefono) msg += `*Telefono:* ${telefono}\n`;
+    msg += `*Fecha:* ${fechaTexto}\n`;
+    msg += `*Hora:* ${horaTexto}\n`;
+    msg += `*Personas:* ${selectedPersonas}\n`;
+    if (selectedZona && selectedZona !== 'Sin preferencia') msg += `*Zona:* ${selectedZona}\n`;
+    if (notas) msg += `*Notas:* ${notas}\n`;
+    msg += `\n_Reservacion pendiente de confirmacion_`;
 
     const url = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
