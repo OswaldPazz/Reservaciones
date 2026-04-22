@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pazzesca — Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cobalt:#1B3F8B;--cobalt-dark:#0f2660;--cobalt-light:#2a56c6;
+  --cream:#F7F4EE;--cream-dark:#EDE9DF;
+  --charcoal:#1a1a1a;--mid:#6b6b6b;--light:#aaa;--white:#fff;
+  --green:#2E7D32;--green-light:#E8F5E9;--green-bg:#f0faf0;
+  --red:#c0392b;--red-light:#FDEDEC;
+  --orange:#E65100;--orange-light:#FFF3E0;
+  --blue-light:#E3F2FD;
+  --urgent:#D32F2F;--urgent-bg:#FFF5F5;
+  --soon:#F57C00;--soon-bg:#FFF8F0;
+  --later:#1B3F8B;--later-bg:#F0F4FA;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'DM Sans',sans-serif;background:#f0ede7;color:var(--charcoal);min-height:100vh}
+
+/* HEADER */
+.header{background:var(--cobalt);padding:18px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.header-left{display:flex;align-items:center;gap:16px}
+.header-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;color:var(--white);letter-spacing:.08em}
+.header-sub{font-size:10px;font-weight:300;color:rgba(255,255,255,.45);letter-spacing:.18em;text-transform:uppercase}
+.header-btn{padding:8px 16px;border:1.5px solid rgba(255,255,255,.25);border-radius:6px;background:0 0;color:#fff;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;transition:all .15s}
+.header-btn:hover{background:rgba(255,255,255,.12)}
+
+/* TABS */
+.tabs{display:flex;background:var(--white);border-bottom:2px solid var(--cream-dark)}
+.tab{flex:1;padding:16px 20px;text-align:center;font-size:13px;font-weight:600;color:var(--light);cursor:pointer;border-bottom:3px solid transparent;transition:all .15s;letter-spacing:.04em;text-transform:uppercase}
+.tab:hover{color:var(--charcoal)}
+.tab.active{color:var(--cobalt);border-bottom-color:var(--cobalt)}
+.tab-badge{display:inline-block;background:var(--orange);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:10px;margin-left:6px;vertical-align:middle;min-width:20px;text-align:center}
+.tab-badge.green{background:var(--green)}
+
+/* CONTENT */
+.content{padding:20px 20px 120px;max-width:700px;margin:0 auto}
+
+/* URGENCY SECTIONS */
+.urgency-section{margin-bottom:28px}
+.urgency-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding:0 4px}
+.urgency-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.urgency-dot.urgent{background:var(--urgent);box-shadow:0 0 8px rgba(211,47,47,.4);animation:pulse 2s infinite}
+.urgency-dot.soon{background:var(--soon)}
+.urgency-dot.later{background:var(--cobalt-light)}
+.urgency-dot.future{background:var(--light)}
+.urgency-label{font-size:11px;font-weight:700;letter-spacing:.15em;text-transform:uppercase}
+.urgency-label.urgent{color:var(--urgent)}
+.urgency-label.soon{color:var(--soon)}
+.urgency-label.later{color:var(--cobalt)}
+.urgency-label.future{color:var(--mid)}
+.urgency-count{font-size:10px;color:var(--light);font-weight:400;letter-spacing:0}
+
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.5}}
+
+/* RESERVATION CARDS - UPCOMING VIEW */
+.upcoming-card{
+  background:var(--white);border-radius:10px;padding:18px 20px;margin-bottom:10px;
+  display:flex;align-items:center;gap:16px;
+  border:1px solid var(--cream-dark);
+  transition:all .2s;position:relative;overflow:hidden
+}
+.upcoming-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:5px}
+.upcoming-card.urg-urgent::before{background:var(--urgent)}
+.upcoming-card.urg-soon::before{background:var(--soon)}
+.upcoming-card.urg-later::before{background:var(--cobalt-light)}
+.upcoming-card.urg-future::before{background:var(--light)}
+
+.uc-time{text-align:center;min-width:70px;flex-shrink:0}
+.uc-hour{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:500;line-height:1}
+.uc-hour.urgent{color:var(--urgent)}
+.uc-hour.soon{color:var(--soon)}
+.uc-hour.later{color:var(--cobalt)}
+.uc-hour.future{color:var(--mid)}
+.uc-countdown{font-size:9px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-top:2px;opacity:.7}
+
+.uc-info{flex:1;min-width:0}
+.uc-name{font-size:16px;font-weight:600;color:var(--charcoal);line-height:1.2}
+.uc-meta{font-size:12px;color:var(--mid);font-weight:300;margin-top:3px;display:flex;flex-wrap:wrap;gap:4px}
+.uc-meta-item{display:inline-flex;align-items:center;gap:3px}
+.uc-zone-tag{display:inline-block;padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;letter-spacing:.04em;margin-top:6px}
+.uc-zone-tag.z-interior{background:#EDE7F6;color:#5E35B1}
+.uc-zone-tag.z-barra{background:#FFF3E0;color:#E65100}
+.uc-zone-tag.z-fachada{background:#E8F5E9;color:#2E7D32}
+.uc-zone-tag.z-cocina{background:#FCE4EC;color:#C62828}
+.uc-zone-tag.z-esquina{background:#E0F7FA;color:#00695C}
+.uc-zone-tag.z-isla{background:#E3F2FD;color:#1565C0}
+.uc-zone-tag.z-otro{background:var(--cream-dark);color:var(--mid)}
+.uc-notes{font-size:11px;color:var(--cobalt);font-style:italic;margin-top:4px;opacity:.8}
+
+.uc-people{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:50px;height:50px;border-radius:50%;flex-shrink:0;
+  font-family:'Cormorant Garamond',serif;font-weight:600;line-height:1
+}
+.uc-people-num{font-size:22px}
+.uc-people-label{font-size:8px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif;opacity:.6}
+.uc-people.urgent{background:var(--urgent-bg);color:var(--urgent)}
+.uc-people.soon{background:var(--soon-bg);color:var(--soon)}
+.uc-people.later{background:var(--later-bg);color:var(--later)}
+.uc-people.future{background:var(--cream);color:var(--mid)}
+
+/* DATE DIVIDER */
+.date-divider{
+  display:flex;align-items:center;gap:12px;margin:24px 0 16px;padding:0 4px
+}
+.date-divider-line{flex:1;height:1px;background:var(--cream-dark)}
+.date-divider-text{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);white-space:nowrap}
+
+/* PENDING CARDS */
+.pending-card{
+  background:var(--white);border-radius:10px;padding:18px 20px;margin-bottom:10px;
+  border:1px solid var(--cream-dark);border-left:5px solid var(--orange);
+  display:flex;align-items:center;gap:16px;transition:all .2s
+}
+.pc-info{flex:1}
+.pc-name{font-size:16px;font-weight:600;color:var(--charcoal)}
+.pc-details{font-size:12px;color:var(--mid);font-weight:300;margin-top:3px}
+.pc-date{font-size:11px;color:var(--orange);font-weight:600;margin-top:4px}
+.pc-actions{display:flex;gap:6px;flex-shrink:0}
+.pc-btn{padding:10px 18px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:600;cursor:pointer;transition:all .15s}
+.pc-btn.confirm{background:var(--green);color:#fff}
+.pc-btn.confirm:hover{background:#1B5E20}
+.pc-btn.cancel{background:var(--red-light);color:var(--red)}
+.pc-btn.cancel:hover{background:var(--red);color:#fff}
+.pc-btn.complete{background:var(--cobalt);color:#fff}
+.pc-btn.complete:hover{background:var(--cobalt-dark)}
+.pc-btn:disabled{opacity:.5;cursor:not-allowed}
+
+/* EMPTY / LOADING */
+.empty-state{text-align:center;padding:80px 24px;color:var(--light);font-size:15px;font-weight:300}
+.empty-icon{font-size:48px;margin-bottom:16px;opacity:.4}
+.loading-state{text-align:center;padding:80px 24px;color:var(--mid);font-size:14px}
+
+/* FAB */
+.fab{position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--cobalt);color:#fff;border:none;font-size:28px;cursor:pointer;box-shadow:0 4px 20px rgba(27,63,139,.35);transition:all .2s;display:flex;align-items:center;justify-content:center;z-index:50}
+.fab:hover{transform:scale(1.08);background:var(--cobalt-dark)}
+
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.show{display:flex}
+.modal{background:var(--white);border-radius:12px;max-width:480px;width:100%;max-height:90vh;overflow-y:auto;padding:28px}
+.modal h2{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:400;margin-bottom:24px;color:var(--charcoal)}
+.modal-group{margin-bottom:16px}
+.modal-group label{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--mid);margin-bottom:6px}
+.modal-group input,.modal-group select{width:100%;padding:12px 14px;border:1.5px solid var(--cream-dark);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:400;color:var(--charcoal);outline:none;background:var(--white);transition:border .15s}
+.modal-group input:focus,.modal-group select:focus{border-color:var(--cobalt)}
+.modal-actions{display:flex;gap:10px;margin-top:24px}
+.modal-btn{flex:1;padding:14px;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.modal-btn.primary{background:var(--cobalt);color:#fff}
+.modal-btn.primary:hover{background:var(--cobalt-dark)}
+.modal-btn.secondary{background:var(--cream);color:var(--mid)}
+.modal-btn.secondary:hover{background:var(--cream-dark)}
+
+@media(max-width:600px){
+  .pending-card,.upcoming-card{flex-wrap:wrap}
+  .pc-actions,.uc-people{width:100%}
+  .pc-actions{justify-content:stretch}
+  .pc-btn{flex:1;text-align:center}
+  .uc-people{width:50px;height:50px}
+}
+@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.upcoming-card,.pending-card{animation:fadeUp .35s ease both}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <div class="header-title">Pazzesca</div>
+    <div class="header-sub">Panel de reservaciones</div>
+  </div>
+  <button class="header-btn" onclick="loadReservations(false)">Actualizar</button>
+</div>
+
+<div class="tabs">
+  <div class="tab active" id="tabPendientes" onclick="switchTab('pendientes')">Pendientes <span class="tab-badge" id="pendingBadge">0</span></div>
+  <div class="tab" id="tabProximas" onclick="switchTab('proximas')">Proximas <span class="tab-badge green" id="upcomingBadge">0</span></div>
+</div>
+
+<div class="content" id="mainContent">
+  <div class="loading-state">Cargando reservaciones...</div>
+</div>
+
+<button class="fab" onclick="openModal()">+</button>
+
+<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <h2>Agregar reservacion manual</h2>
+    <div class="modal-group"><label>Nombre</label><input type="text" id="mNombre" placeholder="Nombre del cliente"></div>
+    <div class="modal-group"><label>Telefono</label><input type="tel" id="mTelefono" placeholder="10 digitos (opcional)"></div>
+    <div class="modal-group"><label>Fecha</label><input type="date" id="mFecha"></div>
+    <div class="modal-group"><label>Hora</label><input type="time" id="mHora"></div>
+    <div class="modal-group"><label>Personas</label><input type="number" id="mPersonas" min="1" max="10" value="2"></div>
+    <div class="modal-group"><label>Zona</label><select id="mZona"><option value="Sin preferencia">Sin preferencia</option><option value="Interior - Mesa grande">Interior - Mesa grande</option><option value="Interior - Barra">Interior - Barra</option><option value="Exterior - Fachada">Exterior - Fachada</option><option value="Barra cocina">Barra - Vista a cocina</option><option value="Esquina">Esquina</option><option value="Isla">Isla</option></select></div>
+    <div class="modal-group"><label>Notas</label><input type="text" id="mNotas" placeholder="Opcional"></div>
+    <div class="modal-actions">
+      <button class="modal-btn secondary" onclick="closeModal()">Cancelar</button>
+      <button class="modal-btn primary" onclick="addManualReservation()">Agregar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+var SHEETS_URL='https://script.google.com/macros/s/AKfycby5yTnYk2Sj-6RwHMSbIAsAsE4oJEECwnbEQxAhqnhkp6v2o-dw5Q9uuEZ-UtkiypKS/exec';
+var allReservations=[];
+var currentView='pendientes';
+var DAYS=['Domingo','Lunes','Martes','Miercoles','Jueves','Viernes','Sabado'];
+var MONTHS=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+function switchTab(v){
+  currentView=v;
+  document.querySelectorAll('.tab').forEach(function(t){t.classList.remove('active')});
+  document.getElementById('tabPendientes').classList.toggle('active',v==='pendientes');
+  document.getElementById('tabProximas').classList.toggle('active',v==='proximas');
+  updateView();
+}
+
+async function loadReservations(silent){
+  var el=document.getElementById('mainContent');
+  if(!silent)el.innerHTML='<div class="loading-state">Cargando reservaciones...</div>';
+  try{
+    var r=await fetch(SHEETS_URL+'?action=getReservations');
+    var result=await r.json();
+    if(result.status==='ok'){allReservations=result.data;updateView();}
+    else if(!silent){el.innerHTML='<div class="empty-state">Error al cargar datos</div>';}
+  }catch(e){if(!silent)el.innerHTML='<div class="empty-state">Error de conexion</div>';console.error(e);}
+}
+
+function updateView(){
+  if(currentView==='pendientes')renderPendientes();
+  else renderProximas();
+  var tp=allReservations.filter(function(r){return r.status==='Pendiente'}).length;
+  var tc=allReservations.filter(function(r){return r.status==='Confirmada'}).length;
+  document.getElementById('pendingBadge').textContent=tp;
+  document.getElementById('pendingBadge').style.display=tp>0?'inline-block':'none';
+  document.getElementById('upcomingBadge').textContent=tc;
+  document.getElementById('upcomingBadge').style.display=tc>0?'inline-block':'none';
+}
+
+// ─── ZONE HELPERS ─────────────────────
+function getZoneClass(zona){
+  var z=String(zona).toLowerCase();
+  if(z.indexOf('interior')!==-1)return 'z-interior';
+  if(z.indexOf('barra')!==-1&&z.indexOf('cocina')!==-1)return 'z-cocina';
+  if(z.indexOf('barra')!==-1)return 'z-barra';
+  if(z.indexOf('fachada')!==-1)return 'z-fachada';
+  if(z.indexOf('esquina')!==-1)return 'z-esquina';
+  if(z.indexOf('isla')!==-1)return 'z-isla';
+  return 'z-otro';
+}
+function getZoneShort(zona){
+  var z=String(zona);
+  if(z.indexOf('Interior')!==-1&&z.indexOf('grande')!==-1)return 'Interior';
+  if(z.indexOf('Interior')!==-1&&z.indexOf('Barra')!==-1)return 'Barra int.';
+  if(z.indexOf('Fachada')!==-1)return 'Fachada';
+  if(z.indexOf('cocina')!==-1)return 'Cocina';
+  if(z.indexOf('Esquina')!==-1)return 'Esquina';
+  if(z.indexOf('Isla')!==-1)return 'Isla';
+  if(z==='Sin preferencia')return 'Libre';
+  return z;
+}
+
+// ─── TIME/DATE PARSING ────────────────
+function parseReservationDate(fechaStr){
+  // Format: "Domingo 20 de abril"
+  var s=String(fechaStr);
+  var parts=s.split(' ');
+  if(parts.length<4)return null;
+  var day=parseInt(parts[1]);
+  var monthName=parts[3];
+  var mi=MONTHS.indexOf(monthName);
+  if(mi===-1)return null;
+  var now=new Date();
+  var year=now.getFullYear();
+  var d=new Date(year,mi,day);
+  // If date is way in the past, it might be next year
+  if(d<new Date(now.getFullYear(),now.getMonth()-2,1))d=new Date(year+1,mi,day);
+  return d;
+}
+
+function parseTime(horaStr){
+  // Format: "2:00 pm"
+  var s=String(horaStr).trim().toLowerCase();
+  var match=s.match(/(\d+):(\d+)\s*(am|pm)/);
+  if(!match)return 0;
+  var h=parseInt(match[1]);
+  var m=parseInt(match[2]);
+  var ap=match[3];
+  if(ap==='pm'&&h!==12)h+=12;
+  if(ap==='am'&&h===12)h=0;
+  return h*60+m;
+}
+
+function getMinutesUntil(fecha,hora){
+  var d=parseReservationDate(fecha);
+  if(!d)return 99999;
+  var mins=parseTime(hora);
+  d.setHours(Math.floor(mins/60),mins%60,0,0);
+  return(d-new Date())/(1000*60);
+}
+
+function getUrgency(minUntil){
+  if(minUntil<=0)return 'past';
+  if(minUntil<=60)return 'urgent';
+  if(minUntil<=180)return 'soon';
+  if(minUntil<=720)return 'later';
+  return 'future';
+}
+
+function getCountdownText(minUntil){
+  if(minUntil<=0)return 'Ya paso';
+  if(minUntil<60)return 'En '+Math.round(minUntil)+' min';
+  if(minUntil<1440)return 'En '+Math.round(minUntil/60)+' hrs';
+  var days=Math.round(minUntil/1440);
+  return 'En '+days+' dia'+(days>1?'s':'');
+}
+
+function getDayLabel(fecha){
+  var d=parseReservationDate(fecha);
+  if(!d)return String(fecha);
+  var now=new Date();now.setHours(0,0,0,0);
+  var target=new Date(d);target.setHours(0,0,0,0);
+  var diff=(target-now)/(1000*60*60*24);
+  if(diff===0)return 'Hoy';
+  if(diff===1)return 'Manana';
+  return DAYS[d.getDay()]+' '+d.getDate()+' de '+MONTHS[d.getMonth()];
+}
+
+// ─── RENDER PROXIMAS ──────────────────
+function renderProximas(){
+  var confirmed=allReservations.filter(function(r){return r.status==='Confirmada'});
+
+  // Add minutesUntil to each
+  confirmed.forEach(function(r){
+    r._minUntil=getMinutesUntil(r.fechaReserva,r.hora);
+    r._urgency=getUrgency(r._minUntil);
+    r._dayLabel=getDayLabel(r.fechaReserva);
+  });
+
+  // Filter out past ones (more than 2 hours ago)
+  confirmed=confirmed.filter(function(r){return r._minUntil>-120});
+
+  // Sort by time
+  confirmed.sort(function(a,b){return a._minUntil-b._minUntil});
+
+  var el=document.getElementById('mainContent');
+
+  if(confirmed.length===0){
+    el.innerHTML='<div class="empty-state"><div class="empty-icon">&#10003;</div>No hay reservaciones confirmadas proximas</div>';
+    return;
+  }
+
+  // Group by day
+  var groups=[];
+  var currentDay='';
+  confirmed.forEach(function(r){
+    if(r._dayLabel!==currentDay){
+      currentDay=r._dayLabel;
+      groups.push({label:currentDay,items:[]});
+    }
+    groups[groups.length-1].items.push(r);
+  });
+
+  var html='';
+  groups.forEach(function(g,gi){
+    // Day divider
+    html+='<div class="date-divider"><div class="date-divider-line"></div><div class="date-divider-text">'+g.label+'</div><div class="date-divider-line"></div></div>';
+
+    g.items.forEach(function(r,i){
+      var urg=r._urgency;
+      var countdown=getCountdownText(r._minUntil);
+      var zoneClass=getZoneClass(r.zona);
+      var zoneShort=getZoneShort(r.zona);
+      var delay=(gi*0.05+i*0.06);
+
+      html+='<div class="upcoming-card urg-'+urg+'" style="animation-delay:'+delay+'s">';
+      html+='<div class="uc-time"><div class="uc-hour '+urg+'">'+(r.hora||'--')+'</div><div class="uc-countdown" style="color:var(--'+urg+')">'+countdown+'</div></div>';
+      html+='<div class="uc-info"><div class="uc-name">'+(r.nombre||'Sin nombre')+'</div>';
+      html+='<div class="uc-meta">';
+      if(r.telefono)html+='<span class="uc-meta-item">'+r.telefono+'</span>';
+      html+='</div>';
+      html+='<span class="uc-zone-tag '+zoneClass+'">'+zoneShort+'</span>';
+      if(r.notas)html+='<div class="uc-notes">'+r.notas+'</div>';
+      html+='</div>';
+      html+='<div class="uc-people '+urg+'"><div class="uc-people-num">'+(r.personas||'?')+'</div><div class="uc-people-label">pers</div></div>';
+      html+='</div>';
+    });
+  });
+
+  el.innerHTML=html;
+}
+
+// ─── RENDER PENDIENTES ────────────────
+function renderPendientes(){
+  var filtered=allReservations.filter(function(r){return r.status==='Pendiente'||r.status==='Confirmada'});
+
+  // Separate
+  var pendientes=filtered.filter(function(r){return r.status==='Pendiente'});
+  var confirmadas=filtered.filter(function(r){return r.status==='Confirmada'});
+
+  // Add day labels
+  pendientes.forEach(function(r){r._dayLabel=getDayLabel(r.fechaReserva);r._minUntil=getMinutesUntil(r.fechaReserva,r.hora)});
+  pendientes.sort(function(a,b){return a._minUntil-b._minUntil});
+
+  // Group pendientes by day
+  var groups=[];
+  var currentDay='';
+  pendientes.forEach(function(r){
+    if(r._dayLabel!==currentDay){
+      currentDay=r._dayLabel;
+      groups.push({label:currentDay,items:[]});
+    }
+    groups[groups.length-1].items.push(r);
+  });
+
+  var el=document.getElementById('mainContent');
+
+  if(pendientes.length===0){
+    el.innerHTML='<div class="empty-state"><div class="empty-icon">&#10003;</div>No hay reservaciones pendientes.<br>Todo confirmado.</div>';
+    return;
+  }
+
+  var html='';
+
+  groups.forEach(function(g,gi){
+    html+='<div class="date-divider"><div class="date-divider-line"></div><div class="date-divider-text">'+g.label+'</div><div class="date-divider-line"></div></div>';
+
+    g.items.forEach(function(r,i){
+      var delay=(gi*0.05+i*0.06);
+      var zoneClass=getZoneClass(r.zona);
+      var zoneShort=getZoneShort(r.zona);
+
+      html+='<div class="pending-card" style="animation-delay:'+delay+'s">';
+      html+='<div class="pc-info">';
+      html+='<div class="pc-name">'+(r.nombre||'Sin nombre')+'</div>';
+      html+='<div class="pc-details">'+(r.hora||'--')+' · '+(r.personas||'?')+' personas'+(r.telefono?' · '+r.telefono:'')+'</div>';
+      html+='<span class="uc-zone-tag '+zoneClass+'">'+zoneShort+'</span>';
+      html+='<div class="pc-date">'+String(r.fechaReserva)+'</div>';
+      if(r.notas)html+='<div class="uc-notes">'+r.notas+'</div>';
+      html+='</div>';
+      html+='<div class="pc-actions">';
+      html+='<button class="pc-btn confirm" onclick="updateStatus('+r.row+',\'Confirmada\',event)">Confirmar</button>';
+      html+='<button class="pc-btn cancel" onclick="updateStatus('+r.row+',\'Cancelada\',event)">Cancelar</button>';
+      html+='</div></div>';
+    });
+  });
+
+  el.innerHTML=html;
+}
+
+// ─── UPDATE STATUS ────────────────────
+async function updateStatus(row,ns,evt){
+  var btns=evt.target.parentElement.querySelectorAll('.pc-btn');
+  btns.forEach(function(b){b.disabled=true;b.style.opacity='.5'});
+  evt.target.textContent='Procesando...';
+  try{
+    await fetch(SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'updateStatus',row:row,status:ns})});
+    var res=allReservations.find(function(r){return r.row===row});
+    if(res)res.status=ns;
+    updateView();
+    setTimeout(function(){loadReservations(true)},2000);
+  }catch(e){console.error('Error:',e);alert('Error al actualizar.');}
+}
+
+// ─── MODAL ────────────────────────────
+function openModal(){
+  document.getElementById('modalOverlay').classList.add('show');
+  var d=new Date();
+  document.getElementById('mFecha').value=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+}
+function closeModal(e){if(!e||e.target===document.getElementById('modalOverlay'))document.getElementById('modalOverlay').classList.remove('show');}
+
+async function addManualReservation(){
+  var nombre=document.getElementById('mNombre').value.trim();
+  var telefono=document.getElementById('mTelefono').value.trim();
+  var fecha=document.getElementById('mFecha').value;
+  var hora=document.getElementById('mHora').value;
+  var personas=document.getElementById('mPersonas').value;
+  var zona=document.getElementById('mZona').value;
+  var notas=document.getElementById('mNotas').value.trim();
+  if(!nombre||!fecha||!hora){alert('Nombre, fecha y hora son obligatorios');return;}
+  var parts=fecha.split('-').map(Number);
+  var dateObj=new Date(parts[0],parts[1]-1,parts[2]);
+  var fechaTexto=DAYS[dateObj.getDay()]+' '+dateObj.getDate()+' de '+MONTHS[dateObj.getMonth()];
+  var tp=hora.split(':').map(Number);
+  var ampm=tp[0]>=12?'pm':'am';
+  var h12=tp[0]%12===0?12:tp[0]%12;
+  var horaTexto=h12+':'+String(tp[1]).padStart(2,'0')+' '+ampm;
+  try{
+    await fetch(SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'addManual',fechaEnvio:new Date().toLocaleString('es-MX',{timeZone:'America/Mexico_City'}),nombre:nombre,telefono:telefono,fechaReserva:fechaTexto,hora:horaTexto,personas:personas,zona:zona,notas:notas?'(Manual) '+notas:'(Manual)',status:'Confirmada'})});
+    document.getElementById('mNombre').value='';document.getElementById('mTelefono').value='';document.getElementById('mHora').value='';document.getElementById('mPersonas').value='2';document.getElementById('mZona').value='Sin preferencia';document.getElementById('mNotas').value='';
+    closeModal();setTimeout(function(){loadReservations(true)},1500);
+  }catch(e){console.error('Error:',e);alert('Error al agregar.');}
+}
+
+// ─── INIT ─────────────────────────────
+loadReservations(false);
+setInterval(function(){loadReservations(true)},30000);
+</script>
+</body>
+</html>
