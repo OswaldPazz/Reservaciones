@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pazzesca — Staff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cobalt: #1B3F8B;
+  --cobalt-deep: #0F2660;
+  --cobalt-mid: #2A56C6;
+  --cobalt-soft: #E8EDF7;
+
+  --cream: #FBF6E9;
+  --cream-warm: #F5EFDC;
+
+  --tomato: #E85A2E;
+  --tomato-soft: #FBE0D3;
+  --tomato-deep: #B8431F;
+
+  --olive: #6B7844;
+  --olive-deep: #4E5A2E;
+  --olive-soft: #E7EAD8;
+
+  --charcoal: #14161C;
+  --smoke: #5C616C;
+  --mist: #A8A69A;
+  --edge: #E8E2CE;
+  --white: #FFFFFF;
+
+  --urgent: #E85A2E;
+  --urgent-bg: #FBE0D3;
+  --soon: #C4841F;
+  --soon-bg: #F5E9CE;
+  --later: #1B3F8B;
+  --later-bg: #E8EDF7;
+  --done: #6B7844;
+  --done-bg: #E7EAD8;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Bricolage Grotesque', -apple-system, sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 100px;
+}
+
+/* ═══════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════ */
+.header {
+  background: var(--cobalt-deep);
+  padding: 20px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 2px solid var(--tomato);
+}
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-eyebrow {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--tomato);
+  margin-bottom: 2px;
+}
+
+.header-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: var(--cream);
+  line-height: 1;
+  letter-spacing: -0.01em;
+}
+
+.header-title em {
+  font-style: italic;
+  color: var(--tomato);
+}
+
+.header-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.header-btn {
+  padding: 10px 18px;
+  border: 2px solid rgba(251, 246, 233, 0.25);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--cream);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-btn:hover {
+  background: rgba(251, 246, 233, 0.1);
+  border-color: var(--cream);
+}
+
+.header-btn.primary {
+  background: var(--tomato);
+  border-color: var(--tomato);
+}
+
+.header-btn.primary:hover {
+  background: var(--tomato-deep);
+  border-color: var(--tomato-deep);
+}
+
+.header-status {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(251, 246, 233, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--olive);
+  animation: pulse-green 2s ease-in-out infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* ═══════════════════════════════════════════
+   STATS BANNER
+   ═══════════════════════════════════════════ */
+.stats-banner {
+  background: var(--white);
+  border-bottom: 1px solid var(--edge);
+  padding: 20px 24px;
+  position: sticky;
+  top: 82px;
+  z-index: 90;
+}
+
+.stats-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.stat-card {
+  padding: 14px 18px;
+  background: var(--cream);
+  border-radius: 12px;
+  border: 1px solid var(--edge);
+}
+
+.stat-label {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin-bottom: 6px;
+}
+
+.stat-value {
+  font-family: 'Instrument Serif', serif;
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--cobalt);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.stat-value em {
+  font-style: italic;
+  color: var(--tomato);
+}
+
+.stat-sub {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px;
+  color: var(--smoke);
+  margin-top: 4px;
+}
+
+.stat-zones {
+  grid-column: span 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.zone-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--white);
+  border: 1.5px solid var(--edge);
+  border-radius: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--smoke);
+}
+
+.zone-chip.active {
+  background: var(--tomato-soft);
+  border-color: var(--tomato);
+  color: var(--tomato-deep);
+}
+
+.zone-chip-count {
+  font-weight: 700;
+  color: var(--cobalt);
+}
+
+.zone-chip.active .zone-chip-count {
+  color: var(--tomato-deep);
+}
+
+/* ═══════════════════════════════════════════
+   SEARCH BAR
+   ═══════════════════════════════════════════ */
+
+
+
+
+
+
+.search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--edge);
+  border: none;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  color: var(--smoke);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.search-clear.show { display: flex; }
+
+/* ═══════════════════════════════════════════
+   TABS
+   ═══════════════════════════════════════════ */
+.tabs {
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 0 24px;
+  display: flex;
+  gap: 6px;
+  border-bottom: 2px solid var(--edge);
+}
+
+.tab {
+  padding: 14px 20px;
+  background: transparent;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mist);
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: -2px;
+}
+
+.tab:hover { color: var(--charcoal); }
+
+.tab.active {
+  color: var(--cobalt);
+  border-bottom-color: var(--tomato);
+}
+
+.tab-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 22px;
+  height: 22px;
+  padding: 0 7px;
+  background: var(--edge);
+  color: var(--smoke);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  border-radius: 100px;
+  letter-spacing: 0;
+}
+
+.tab.active .tab-badge {
+  background: var(--tomato);
+  color: var(--cream);
+}
+
+.tab-badge.orange {
+  background: var(--tomato);
+  color: var(--cream);
+}
+
+/* ═══════════════════════════════════════════
+   CONTENT
+   ═══════════════════════════════════════════ */
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.urgency-section { margin-bottom: 32px; }
+
+.urgency-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+  padding: 0 4px;
+}
+
+.urgency-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.urgency-dot.urgent {
+  background: var(--tomato);
+  box-shadow: 0 0 10px rgba(232, 90, 46, 0.5);
+  animation: pulse-tomato 1.5s ease-in-out infinite;
+}
+
+.urgency-dot.soon { background: var(--soon); }
+.urgency-dot.later { background: var(--cobalt); }
+.urgency-dot.future { background: var(--mist); }
+
+@keyframes pulse-tomato {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.urgency-label {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.urgency-label.urgent { color: var(--tomato-deep); }
+.urgency-label.soon { color: var(--soon); }
+.urgency-label.later { color: var(--cobalt); }
+.urgency-label.future { color: var(--smoke); }
+
+.urgency-count {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--smoke);
+}
+
+/* ═══════════════════════════════════════════
+   RESERVATION CARD
+   ═══════════════════════════════════════════ */
+.card {
+  background: var(--white);
+  border: 2px solid var(--edge);
+  border-radius: 14px;
+  padding: 18px 22px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 18px;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+}
+
+.card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0 var(--cobalt);
+}
+
+.card.urg-urgent::before { background: var(--tomato); }
+.card.urg-soon::before { background: var(--soon); }
+.card.urg-later::before { background: var(--cobalt); }
+.card.urg-future::before { background: var(--mist); }
+.card.status-arrived::before { background: var(--olive); }
+.card.status-noshow { opacity: 0.5; }
+.card.status-noshow::before { background: var(--smoke); }
+.card.status-cancelled { opacity: 0.4; }
+.card.status-cancelled::before { background: var(--smoke); }
+
+.card-time {
+  text-align: center;
+  min-width: 68px;
+}
+
+.card-hour {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--cobalt);
+  letter-spacing: -0.01em;
+}
+
+.card-hour em { font-style: italic; }
+
+.card.urg-urgent .card-hour { color: var(--tomato-deep); }
+.card.urg-soon .card-hour { color: var(--soon); }
+.card.urg-future .card-hour { color: var(--smoke); }
+
+.card-countdown {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 4px;
+  color: var(--smoke);
+}
+
+.card.urg-urgent .card-countdown { color: var(--tomato); }
+
+.card-info { min-width: 0; }
+
+.card-name {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--charcoal);
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.card-frequent {
+  display: inline-block;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--tomato);
+  background: rgba(232, 90, 46, 0.1);
+  padding: 2px 8px;
+  border-radius: 100px;
+  margin-left: 6px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.card-phone {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 13px;
+  color: var(--smoke);
+  text-decoration: none;
+  font-variant-numeric: tabular-nums;
+}
+
+.card-phone:hover { color: var(--cobalt); text-decoration: underline; }
+
+.card-zone {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.card-zone.z-interior { background: var(--cobalt-soft); color: var(--cobalt); }
+.card-zone.z-fachada { background: var(--olive-soft); color: var(--olive-deep); }
+.card-zone.z-esquina { background: var(--tomato-soft); color: var(--tomato-deep); }
+.card-zone.z-isla { background: var(--olive-soft); color: var(--olive-deep); }
+.card-zone.z-libre { background: var(--edge); color: var(--smoke); }
+.card-zone.z-otro { background: var(--cream-warm); color: var(--smoke); }
+
+.card-notes {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--cobalt);
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+.card-people {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid var(--cobalt);
+  background: var(--white);
+  flex-shrink: 0;
+}
+
+.card-people-num {
+  font-family: 'Instrument Serif', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--cobalt);
+  line-height: 1;
+}
+
+.card-people-label {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 7px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--smoke);
+  margin-top: 2px;
+}
+
+.card.urg-urgent .card-people { border-color: var(--tomato); }
+.card.urg-urgent .card-people-num { color: var(--tomato-deep); }
+
+/* Actions */
+.card-actions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.action-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--edge);
+  background: var(--white);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.15s;
+  color: var(--smoke);
+}
+
+.action-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 var(--cobalt);
+}
+
+.action-btn.arrived {
+  border-color: var(--olive);
+  color: var(--olive-deep);
+}
+.action-btn.arrived:hover {
+  background: var(--olive);
+  color: var(--cream);
+  box-shadow: 2px 2px 0 var(--olive-deep);
+}
+
+.action-btn.noshow {
+  border-color: var(--smoke);
+  color: var(--smoke);
+}
+.action-btn.noshow:hover {
+  background: var(--smoke);
+  color: var(--cream);
+}
+
+.action-btn.cancel {
+  border-color: var(--tomato);
+  color: var(--tomato);
+}
+.action-btn.cancel:hover {
+  background: var(--tomato);
+  color: var(--cream);
+  box-shadow: 2px 2px 0 var(--tomato-deep);
+}
+
+.action-btn svg { width: 18px; height: 18px; }
+
+/* Status badge on already-processed cards */
+.card-status-badge {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  padding: 3px 10px;
+  border-radius: 100px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.card-status-badge.arrived { background: var(--olive); color: var(--cream); }
+.card-status-badge.noshow { background: var(--smoke); color: var(--cream); }
+.card-status-badge.cancelled { background: var(--tomato); color: var(--cream); }
+
+/* ═══════════════════════════════════════════
+   DATE DIVIDER
+   ═══════════════════════════════════════════ */
+.date-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin: 28px 0 14px;
+  padding: 0 4px;
+}
+
+.date-divider-line {
+  flex: 1;
+  height: 1px;
+  background: repeating-linear-gradient(90deg, var(--edge) 0 6px, transparent 6px 12px);
+}
+
+.date-divider-text {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: var(--cobalt);
+  white-space: nowrap;
+}
+
+/* ═══════════════════════════════════════════
+   EMPTY STATE
+   ═══════════════════════════════════════════ */
+.empty {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--white);
+  border: 2px dashed var(--edge);
+  border-radius: 16px;
+}
+
+.empty-eyebrow {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--tomato);
+  margin-bottom: 12px;
+}
+
+.empty-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 26px;
+  font-weight: 400;
+  color: var(--cobalt);
+  margin-bottom: 8px;
+}
+
+.empty-title em { font-style: italic; color: var(--tomato); }
+
+.empty-desc {
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 14px;
+  color: var(--smoke);
+}
+
+/* ═══════════════════════════════════════════
+   FLOATING ADD BUTTON
+   ═══════════════════════════════════════════ */
+.fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--tomato);
+  color: var(--cream);
+  border: 3px solid var(--cobalt);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 4px 4px 0 var(--cobalt-deep);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 95;
+}
+
+.fab:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 var(--cobalt-deep);
+}
+
+.fab:active {
+  transform: translate(2px, 2px);
+  box-shadow: 0 0 0 var(--cobalt-deep);
+}
+
+.fab svg { width: 28px; height: 28px; }
+
+/* ═══════════════════════════════════════════
+   MODAL
+   ═══════════════════════════════════════════ */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 38, 96, 0.6);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+  padding: 20px;
+}
+
+.modal-overlay.show { display: flex; }
+
+.modal {
+  background: var(--white);
+  border-radius: 20px;
+  border: 2px solid var(--cobalt);
+  box-shadow: 8px 8px 0 var(--tomato);
+  max-width: 480px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 32px;
+}
+
+.modal-title {
+  font-family: 'Instrument Serif', serif;
+  font-size: 28px;
+  color: var(--cobalt);
+  margin-bottom: 4px;
+}
+
+.modal-title em { font-style: italic; color: var(--tomato); }
+
+.modal-desc {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--smoke);
+  margin-bottom: 24px;
+}
+
+.modal-field { margin-bottom: 16px; }
+
+.modal-label {
+  display: block;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cobalt);
+  margin-bottom: 6px;
+}
+
+.modal-input, .modal-select, .modal-textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--cream);
+  border: 2px solid var(--cobalt);
+  border-radius: 10px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 15px;
+  color: var(--charcoal);
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.modal-input:focus, .modal-select:focus, .modal-textarea:focus {
+  background: var(--white);
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0 var(--tomato);
+}
+
+.modal-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%231B3F8B' d='M5 8l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  padding-right: 40px;
+}
+
+.modal-textarea {
+  resize: vertical;
+  min-height: 70px;
+  font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.modal-row { display: flex; gap: 12px; }
+.modal-row .modal-field { flex: 1; }
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 2px dashed var(--edge);
+}
+
+.modal-btn {
+  padding: 14px 22px;
+  border-radius: 100px;
+  border: 2px solid var(--cobalt);
+  font-family: 'Bricolage Grotesque', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.modal-btn.cancel {
+  background: var(--white);
+  color: var(--olive-deep);
+  border-color: var(--olive);
+}
+
+.modal-btn.confirm {
+  background: var(--cobalt);
+  color: var(--cream);
+  flex: 1;
+  box-shadow: 3px 3px 0 var(--tomato);
+}
+
+.modal-btn.confirm:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0 var(--tomato);
+}
+
+
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-zones { grid-column: span 2; }
+  .header-title { font-size: 22px; }
+  .header-btn { padding: 8px 14px; font-size: 11px; }
+  .header-status { display: none; }
+  .card { grid-template-columns: auto 1fr auto; padding: 14px 16px; gap: 12px; }
+  .card-actions { grid-column: span 3; margin-top: 8px; justify-content: center; }
+  .stats-banner { top: 74px; }
+}
+
+@media (max-width: 520px) {
+  .header { padding: 16px 18px; }
+  .stats-banner { padding: 16px 18px; top: 68px; }
+  .tab { padding: 12px 14px; font-size: 12px; }
+  .content { padding: 16px 18px; }
+  .stat-value { font-size: 26px; }
+  .stat-card { padding: 12px 14px; }
+  .card { grid-template-columns: 1fr auto; gap: 10px; padding: 14px; }
+  .card-time { text-align: left; }
+  .card-people { grid-row: span 2; }
+  .card-actions { grid-column: span 2; margin-top: 6px; }
+  .card-hour { font-size: 24px; }
+  .fab { width: 56px; height: 56px; bottom: 20px; right: 20px; }
+  .modal { padding: 24px; }
+  .modal-title { font-size: 24px; }
+  .modal-row { flex-direction: column; gap: 0; }
+}
+
+@supports (padding: env(safe-area-inset-top)) {
+  .header {
+    padding-top: max(20px, env(safe-area-inset-top));
+  }
+  .fab {
+    bottom: max(24px, calc(env(safe-area-inset-bottom) + 12px));
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div>
+        <div class="header-eyebrow">Staff</div>
+        <div class="header-title">Pazzesca <em>reservaciones</em></div>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="header-status">
+        <span class="header-status-dot"></span>
+        <span id="lastUpdate">Actualizando...</span>
+      </div>
+      <button class="header-btn" onclick="refreshNow()">↻ Refrescar</button>
+    </div>
+  </div>
+</div>
+
+<!-- STATS BANNER -->
+<div class="stats-banner">
+  <div class="stats-inner">
+    <div class="stat-card">
+      <div class="stat-label">Hoy · Personas</div>
+      <div class="stat-value" id="statPeople">—</div>
+      <div class="stat-sub" id="statPeopleSub">esperadas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Hoy · Mesas</div>
+      <div class="stat-value" id="statTables">—</div>
+      <div class="stat-sub" id="statTablesSub">reservadas</div>
+    </div>
+    <div class="stat-card stat-zones">
+      <div style="width: 100%;">
+        <div class="stat-label">Ocupación por zona · Hoy</div>
+        <div id="zonesOccupancy" style="display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px;">
+          <span class="zone-chip">Cargando…</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SEARCH -->
+<!-- TABS -->
+<div class="tabs">
+  <button class="tab active" data-tab="today" onclick="switchTab('today')">
+    Hoy <span class="tab-badge" id="badgeToday">0</span>
+  </button>
+  <button class="tab" data-tab="upcoming" onclick="switchTab('upcoming')">
+    Próximas <span class="tab-badge" id="badgeUpcoming">0</span>
+  </button>
+  <button class="tab" data-tab="pending" onclick="switchTab('pending')">
+    Pendientes <span class="tab-badge" id="badgePending">0</span>
+  </button>
+</div>
+
+<!-- CONTENT -->
+<div class="content" id="content">
+  <div class="empty">
+    <div class="empty-eyebrow">Cargando</div>
+    <div class="empty-title">Un <em>momento</em></div>
+    <div class="empty-desc">Consultando la hoja de reservaciones…</div>
+  </div>
+</div>
+
+<!-- FAB -->
+<button class="fab" onclick="openManualModal()" title="Agregar reservación manual">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="12" y1="5" x2="12" y2="19"/>
+    <line x1="5" y1="12" x2="19" y2="12"/>
+  </svg>
+</button>
+
+<!-- MANUAL MODAL -->
+<div class="modal-overlay" id="manualModal" onclick="closeIfOverlay(event)">
+  <div class="modal">
+    <div class="modal-title">Reservación <em>manual</em></div>
+    <div class="modal-desc">Agrega una reservación tomada por teléfono o WhatsApp</div>
+
+    <div class="modal-field">
+      <label class="modal-label">Nombre</label>
+      <input type="text" class="modal-input" id="mNombre" placeholder="Nombre del cliente">
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label">Teléfono</label>
+      <input type="tel" class="modal-input" id="mTelefono" placeholder="10 dígitos" inputmode="numeric">
+    </div>
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Fecha</label>
+        <input type="date" class="modal-input" id="mFecha">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Hora</label>
+        <input type="time" class="modal-input" id="mHora">
+      </div>
+    </div>
+
+    <div class="modal-row">
+      <div class="modal-field">
+        <label class="modal-label">Personas</label>
+        <input type="number" class="modal-input" id="mPersonas" min="1" max="12" value="2">
+      </div>
+      <div class="modal-field">
+        <label class="modal-label">Zona</label>
+        <select class="modal-select" id="mZona">
+          <option value="Sin preferencia">Sin preferencia</option>
+          <option value="Interior">Interior</option>
+          <option value="Fachada · Frente">Fachada · Frente</option>
+          <option value="Fachada · Izquierda">Fachada · Izquierda</option>
+          <option value="Esquina">Esquina</option>
+          <option value="Isla">Isla</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="modal-field">
+      <label class="modal-label">Notas <span style="font-weight: 400; opacity: 0.6; text-transform: none; letter-spacing: 0.02em; font-family: 'Instrument Serif', serif; font-style: italic;">(opcional)</span></label>
+      <textarea class="modal-textarea" id="mNotas" placeholder="Cumpleaños, alergias, mesa exterior…"></textarea>
+    </div>
+
+    <div class="modal-actions">
+      <button class="modal-btn cancel" onclick="closeManualModal()">Cancelar</button>
+      <button class="modal-btn confirm" onclick="saveManual()">Guardar reservación</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+
+<script>
+// ═══════════════════════════════════════════
+// CONFIG
+// ═══════════════════════════════════════════
+var SHEETS_URL = 'https://script.google.com/macros/s/AKfycby5yTnYk2Sj-6RwHMSbIAsAsE4oJEECwnbEQxAhqnhkp6v2o-dw5Q9uuEZ-UtkiypKS/exec';
+
+var ZONES = ['Interior', 'Fachada · Frente', 'Fachada · Izquierda', 'Esquina', 'Isla'];
+
+// State
+var allReservations = [];
+var currentTab = 'today';
+var refreshInterval = null;
+
+// ═══════════════════════════════════════════
+// FETCH
+// ═══════════════════════════════════════════
+async function fetchReservations() {
+  try {
+    var r = await fetch(SHEETS_URL + '?action=getReservations');
+    var result = await r.json();
+    if (result.status === 'ok') {
+      allReservations = result.data;
+      updateAll();
+      updateLastUpdate();
+    }
+  } catch (e) {
+    console.error('Fetch error:', e);
+  }
+}
+
+function updateLastUpdate() {
+  var now = new Date();
+  var h = now.getHours();
+  var m = String(now.getMinutes()).padStart(2, '0');
+  var ampm = h >= 12 ? 'pm' : 'am';
+  var h12 = h % 12 === 0 ? 12 : h % 12;
+  document.getElementById('lastUpdate').textContent = 'Actualizado ' + h12 + ':' + m + ' ' + ampm;
+}
+
+// ═══════════════════════════════════════════
+// PARSE
+// ═══════════════════════════════════════════
+var MONTHS = {
+  'enero': 0, 'febrero': 1, 'marzo': 2, 'abril': 3, 'mayo': 4, 'junio': 5,
+  'julio': 6, 'agosto': 7, 'septiembre': 8, 'octubre': 9, 'noviembre': 10, 'diciembre': 11
+};
+
+function parseReservationDate(fechaStr, fechaEnvio) {
+  var s = String(fechaStr).toLowerCase();
+  var match = s.match(/(\d+)\s+de\s+(\w+)/);
+  if (!match) return null;
+  var day = parseInt(match[1]);
+  var monthName = match[2];
+  var month = MONTHS[monthName];
+  if (month === undefined) return null;
+
+  // Get year from fechaEnvio if available (matches original working staff logic)
+  var now = new Date();
+  var year = now.getFullYear();
+  if (fechaEnvio) {
+    var envioDate = new Date(fechaEnvio);
+    if (!isNaN(envioDate.getTime())) {
+      var envioMonth = envioDate.getMonth();
+      var envioYear = envioDate.getFullYear();
+      year = envioYear;
+      // If reservation month is much earlier than envio month, it's next year
+      if (month < envioMonth - 6) year = envioYear + 1;
+    }
+  }
+
+  var d = new Date(year, month, day);
+  // If date is way in the past, it might be next year
+  if (d < new Date(now.getFullYear(), now.getMonth() - 2, 1)) {
+    d = new Date(year + 1, month, day);
+  }
+  return d;
+}
+
+function parseTimeToMins(horaStr) {
+  var s = String(horaStr).trim().toLowerCase();
+  var match = s.match(/(\d+):(\d+)\s*(am|pm)/);
+  if (!match) return -1;
+  var h = parseInt(match[1]);
+  var m = parseInt(match[2]);
+  var ap = match[3];
+  if (ap === 'pm' && h !== 12) h += 12;
+  if (ap === 'am' && h === 12) h = 0;
+  return h * 60 + m;
+}
+
+function formatDateLabel(d) {
+  var days = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  var months = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  return days[d.getDay()] + ' ' + d.getDate() + ' de ' + months[d.getMonth()];
+}
+
+function isSameDay(a, b) {
+  return a.getDate() === b.getDate() && a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
+}
+
+function getZoneClass(zona) {
+  var z = String(zona).toLowerCase();
+  if (z.indexOf('interior') !== -1) return 'z-interior';
+  if (z.indexOf('fachada') !== -1) return 'z-fachada';
+  if (z.indexOf('esquina') !== -1) return 'z-esquina';
+  if (z.indexOf('isla') !== -1) return 'z-isla';
+  if (z.indexOf('sin preferencia') !== -1) return 'z-libre';
+  return 'z-otro';
+}
+
+function getZoneShort(zona) {
+  var z = String(zona);
+  if (z.indexOf('Fachada') !== -1 && z.indexOf('Frente') !== -1) return 'Fachada Fr.';
+  if (z.indexOf('Fachada') !== -1 && z.indexOf('Izquierda') !== -1) return 'Fachada Izq.';
+  if (z.indexOf('Fachada') !== -1) return 'Fachada';
+  if (z.indexOf('Interior') !== -1) return 'Interior';
+  if (z.indexOf('Esquina') !== -1) return 'Esquina';
+  if (z.indexOf('Isla') !== -1) return 'Isla';
+  if (z === 'Sin preferencia') return 'Libre';
+  return z;
+}
+
+function normalizePhone(phone) {
+  return String(phone || '').replace(/\D/g, '');
+}
+
+// ═══════════════════════════════════════════
+// CUSTOMER HISTORY
+// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+// FILTER & CLASSIFY
+// ═══════════════════════════════════════════
+function getUrgency(minutesUntil) {
+  if (minutesUntil < 0) return 'past';
+  if (minutesUntil < 60) return 'urgent';
+  if (minutesUntil < 180) return 'soon';
+  if (minutesUntil < 720) return 'later';
+  return 'future';
+}
+
+function getUrgencyLabel(u) {
+  if (u === 'urgent') return 'En menos de 1 hora';
+  if (u === 'soon') return 'En 1–3 horas';
+  if (u === 'later') return 'Más tarde hoy';
+  if (u === 'future') return 'Próximos días';
+  return '';
+}
+
+function getCountdownText(minutesUntil) {
+  if (minutesUntil < 0) return '';
+  if (minutesUntil < 60) return 'en ' + minutesUntil + ' min';
+  var hours = Math.floor(minutesUntil / 60);
+  var mins = minutesUntil % 60;
+  if (hours < 24) {
+    if (mins === 0) return 'en ' + hours + 'h';
+    return 'en ' + hours + 'h ' + mins + 'm';
+  }
+  var days = Math.floor(hours / 24);
+  return 'en ' + days + 'd';
+}
+
+function classify() {
+  var now = new Date();
+  var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  var nowMins = now.getHours() * 60 + now.getMinutes();
+
+  var todayList = [];
+  var upcomingList = [];
+  var pendingList = [];
+
+  for (var i = 0; i < allReservations.length; i++) {
+    var r = allReservations[i];
+    var status = String(r.status || '').trim();
+
+    // Skip cancelled from operational views
+    if (status.toLowerCase() === 'cancelada') continue;
+
+    var resDate = parseReservationDate(r.fechaReserva, r.fechaEnvio);
+    if (!resDate) continue;
+
+    var resMins = parseTimeToMins(r.hora);
+    if (resMins < 0) continue;
+
+    var isTodayRes = isSameDay(resDate, today);
+    var isFutureRes = resDate > today;
+
+    // Minutes until reservation
+    var minutesUntil;
+    if (isTodayRes) {
+      minutesUntil = resMins - nowMins;
+    } else if (isFutureRes) {
+      var daysDiff = Math.floor((resDate - today) / (1000 * 60 * 60 * 24));
+      minutesUntil = daysDiff * 24 * 60 + (resMins - nowMins);
+    } else {
+      continue; // past date
+    }
+
+    r._minutesUntil = minutesUntil;
+    r._resDate = resDate;
+    r._resMins = resMins;
+
+    // Pending status
+    if (status.toLowerCase() === 'pendiente') {
+      pendingList.push(r);
+    }
+
+    // Today
+    if (isTodayRes) {
+      // Show only if not past OR just arrived (past 30min still shown for context)
+      if (minutesUntil > -120) todayList.push(r);
+    } else if (isFutureRes && minutesUntil > 0 && minutesUntil < 90 * 24 * 60) {
+      upcomingList.push(r);
+    }
+  }
+
+  // Sort
+  todayList.sort(function(a, b) { return a._resMins - b._resMins; });
+  upcomingList.sort(function(a, b) { return a._minutesUntil - b._minutesUntil; });
+  pendingList.sort(function(a, b) { return a._minutesUntil - b._minutesUntil; });
+
+  return { today: todayList, upcoming: upcomingList, pending: pendingList };
+}
+
+// ═══════════════════════════════════════════
+// STATS
+// ═══════════════════════════════════════════
+function updateStats(todayList) {
+  // Filter out arrived/noshow/cancelled from active counts
+  var active = todayList.filter(function(r) {
+    var s = String(r.status || '').toLowerCase();
+    return s.indexOf('no show') === -1 && s !== 'cancelada';
+  });
+
+  var totalPeople = 0;
+  var activeTables = active.length;
+  var zoneCounts = {};
+
+  active.forEach(function(r) {
+    var p = parseInt(r.personas) || 0;
+    totalPeople += p;
+    var zone = getZoneShort(r.zona);
+    if (!zoneCounts[zone]) zoneCounts[zone] = { count: 0, people: 0 };
+    zoneCounts[zone].count++;
+    zoneCounts[zone].people += p;
+  });
+
+  document.getElementById('statPeople').innerHTML = '<em>' + totalPeople + '</em>';
+  document.getElementById('statTables').textContent = activeTables;
+
+  // Zones
+  var zonesHtml = '';
+  ZONES.forEach(function(z) {
+    var short = getZoneShort(z);
+    var data = zoneCounts[short] || { count: 0, people: 0 };
+    var active = data.count > 0 ? ' active' : '';
+    zonesHtml += '<span class="zone-chip' + active + '">' +
+                 short + ' <span class="zone-chip-count">' + data.count + '</span>' +
+                 '</span>';
+  });
+  // Also "Libre" if any
+  if (zoneCounts['Libre']) {
+    zonesHtml += '<span class="zone-chip active">Libre <span class="zone-chip-count">' + zoneCounts['Libre'].count + '</span></span>';
+  }
+  document.getElementById('zonesOccupancy').innerHTML = zonesHtml;
+}
+
+// ═══════════════════════════════════════════
+// RENDER
+// ═══════════════════════════════════════════
+function renderCard(r) {
+  var minutesUntil = r._minutesUntil;
+  var status = String(r.status || '').trim();
+  var statusLower = status.toLowerCase();
+
+  var urgency;
+  var isProcessed = false;
+  if (statusLower.indexOf('llegaron') !== -1) { urgency = 'arrived'; isProcessed = true; }
+  else if (statusLower.indexOf('no show') !== -1) { urgency = 'noshow'; isProcessed = true; }
+  else if (statusLower === 'cancelada') { urgency = 'cancelled'; isProcessed = true; }
+  else urgency = getUrgency(minutesUntil);
+
+  var cardClass = 'card urg-' + urgency;
+  if (isProcessed) cardClass += ' status-' + urgency;
+
+  var countdown = isProcessed ? '' : getCountdownText(minutesUntil);
+  var zoneClass = getZoneClass(r.zona);
+  var zoneShort = getZoneShort(r.zona);
+
+  var notes = String(r.notas || '').trim();
+  var notesHtml = notes ? '<div class="card-notes">' + escapeHtml(notes) + '</div>' : '';
+
+  // Only show cancel button for confirmed reservations (in case of no-show or emergency cancel)
+  var actionsHtml = '';
+  if (!isProcessed && statusLower === 'confirmada') {
+    actionsHtml =
+      '<div class="card-actions">' +
+        '<button class="action-btn cancel" onclick="markStatus(' + r.row + ', \'Cancelada\')" title="Cancelar reservación">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+        '</button>' +
+      '</div>';
+  }
+
+  var statusBadge = '';
+  if (isProcessed) {
+    var label = statusLower.indexOf('llegaron') !== -1 ? 'Llegaron' :
+                statusLower.indexOf('no show') !== -1 ? 'No show' : 'Cancelada';
+    statusBadge = '<div class="card-status-badge ' + urgency + '">' + label + '</div>';
+  }
+  var phoneDigits = normalizePhone(r.telefono);
+  var phoneHtml = phoneDigits ? '<a href="tel:+52' + phoneDigits + '" class="card-phone">' + formatPhone(phoneDigits) + '</a>' : '';
+
+  return (
+    '<div class="' + cardClass + '">' +
+      statusBadge +
+      '<div class="card-time">' +
+        '<div class="card-hour">' + escapeHtml(r.hora) + '</div>' +
+        (countdown ? '<div class="card-countdown">' + countdown + '</div>' : '') +
+      '</div>' +
+      '<div class="card-info">' +
+        '<div class="card-name">' + escapeHtml(r.nombre) + (parseInt(r.visitas) >= 3 ? ' <span class="card-frequent" title="Cliente frecuente">◈ ' + r.visitas + '× cliente frecuente</span>' : '') + '</div>' +
+        '<div class="card-meta">' +
+          phoneHtml +
+          '<span class="card-zone ' + zoneClass + '">' + zoneShort + '</span>' +
+        '</div>' +
+        notesHtml +
+      '</div>' +
+      '<div class="card-people">' +
+        '<div class="card-people-num">' + (r.personas || '?') + '</div>' +
+        '<div class="card-people-label">Pers.</div>' +
+      '</div>' +
+      actionsHtml +
+    '</div>'
+  );
+}
+
+function formatPhone(digits) {
+  if (digits.length === 10) {
+    return digits.substr(0, 2) + ' ' + digits.substr(2, 4) + ' ' + digits.substr(6);
+  }
+  return digits;
+}
+
+function escapeHtml(s) {
+  return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+}
+
+function renderTodayView(list) {
+  if (list.length === 0) {
+    return emptyState('Sin reservaciones hoy', 'No hay reservaciones activas para hoy. Puedes agregar una manual con el botón +.');
+  }
+
+  var filtered = list;
+  if (filtered.length === 0) {
+    return emptyState('Sin resultados', 'Ninguna reservación coincide con tu búsqueda.');
+  }
+
+  // Group by urgency
+  var groups = { urgent: [], soon: [], later: [], past: [] };
+  filtered.forEach(function(r) {
+    var u = getUrgency(r._minutesUntil);
+    if (u === 'urgent' || u === 'soon' || u === 'later') groups[u].push(r);
+    else groups.past.push(r);
+  });
+
+  var html = '';
+  ['urgent', 'soon', 'later'].forEach(function(key) {
+    if (groups[key].length === 0) return;
+    html += '<div class="urgency-section">';
+    html += '<div class="urgency-header">' +
+              '<span class="urgency-dot ' + key + '"></span>' +
+              '<span class="urgency-label ' + key + '">' + getUrgencyLabel(key) + '</span>' +
+              '<span class="urgency-count">— ' + groups[key].length + '</span>' +
+            '</div>';
+    groups[key].forEach(function(r) { html += renderCard(r); });
+    html += '</div>';
+  });
+
+  // Past reservations at bottom
+  if (groups.past.length > 0) {
+    html += '<div class="urgency-section" style="opacity: 0.6;">';
+    html += '<div class="urgency-header">' +
+              '<span class="urgency-dot future"></span>' +
+              '<span class="urgency-label future">Ya pasaron</span>' +
+              '<span class="urgency-count">— ' + groups.past.length + '</span>' +
+            '</div>';
+    groups.past.forEach(function(r) { html += renderCard(r); });
+    html += '</div>';
+  }
+
+  return html;
+}
+
+function renderUpcomingView(list) {
+  if (list.length === 0) {
+    return emptyState('Sin reservaciones próximas', 'No hay reservaciones agendadas para los próximos días.');
+  }
+
+  var filtered = list;
+  if (filtered.length === 0) {
+    return emptyState('Sin resultados', 'Ninguna reservación coincide con tu búsqueda.');
+  }
+
+  // Group by date
+  var groups = {};
+  var order = [];
+  filtered.forEach(function(r) {
+    var key = r._resDate.toISOString().split('T')[0];
+    if (!groups[key]) { groups[key] = []; order.push(key); }
+    groups[key].push(r);
+  });
+
+  var html = '';
+  order.forEach(function(key) {
+    var date = new Date(key + 'T00:00:00');
+    html += '<div class="date-divider">' +
+              '<div class="date-divider-line"></div>' +
+              '<div class="date-divider-text">' + formatDateLabel(date) + '</div>' +
+              '<div class="date-divider-line"></div>' +
+            '</div>';
+    groups[key].forEach(function(r) { html += renderCard(r); });
+  });
+
+  return html;
+}
+
+function renderPendingView(list) {
+  if (list.length === 0) {
+    return emptyState('Nada pendiente', '¡Todo confirmado! Cuando llegue una reservación nueva por el link aparecerá aquí.');
+  }
+
+  var filtered = list;
+  if (filtered.length === 0) {
+    return emptyState('Sin resultados', 'Ninguna reservación coincide con tu búsqueda.');
+  }
+
+  var html = '';
+  filtered.forEach(function(r) {
+    // Add a "confirm" action for pending
+    var card = renderCardWithConfirm(r);
+    html += card;
+  });
+
+  return html;
+}
+
+function renderCardWithConfirm(r) {
+  var zoneClass = getZoneClass(r.zona);
+  var zoneShort = getZoneShort(r.zona);
+  var notes = String(r.notas || '').trim();
+  var notesHtml = notes ? '<div class="card-notes">' + escapeHtml(notes) + '</div>' : '';
+
+  var phoneDigits = normalizePhone(r.telefono);
+  var phoneHtml = phoneDigits ? '<a href="tel:+52' + phoneDigits + '" class="card-phone">' + formatPhone(phoneDigits) + '</a>' : '';
+
+  var dateStr = formatDateLabel(r._resDate);
+
+  return (
+    '<div class="card urg-later" style="background: var(--cream-warm);">' +
+      '<div class="card-time">' +
+        '<div class="card-hour">' + escapeHtml(r.hora) + '</div>' +
+        '<div class="card-countdown">' + dateStr.split(' ').slice(0, 2).join(' ') + '</div>' +
+      '</div>' +
+      '<div class="card-info">' +
+        '<div class="card-name">' + escapeHtml(r.nombre) + (parseInt(r.visitas) >= 3 ? ' <span class="card-frequent" title="Cliente frecuente">◈ ' + r.visitas + '× cliente frecuente</span>' : '') + '</div>' +
+        '<div class="card-meta">' +
+          phoneHtml +
+          '<span class="card-zone ' + zoneClass + '">' + zoneShort + '</span>' +
+        '</div>' +
+        notesHtml +
+      '</div>' +
+      '<div class="card-people">' +
+        '<div class="card-people-num">' + (r.personas || '?') + '</div>' +
+        '<div class="card-people-label">Pers.</div>' +
+      '</div>' +
+      '<div class="card-actions">' +
+        '<button class="action-btn arrived" onclick="markStatus(' + r.row + ', \'Confirmada\')" title="Confirmar">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>' +
+        '</button>' +
+        '<button class="action-btn cancel" onclick="markStatus(' + r.row + ', \'Cancelada\')" title="Cancelar">' +
+          '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+        '</button>' +
+      '</div>' +
+    '</div>'
+  );
+}
+
+function emptyState(title, desc) {
+  return (
+    '<div class="empty">' +
+      '<div class="empty-eyebrow">Todo en orden</div>' +
+      '<div class="empty-title">' + escapeHtml(title) + '</div>' +
+      '<div class="empty-desc">' + escapeHtml(desc) + '</div>' +
+    '</div>'
+  );
+}
+
+// ═══════════════════════════════════════════
+// UPDATE
+// ═══════════════════════════════════════════
+function updateAll() {
+  var classified = classify();
+
+  // Update badges
+  document.getElementById('badgeToday').textContent = classified.today.filter(function(r) {
+    var s = String(r.status || '').toLowerCase();
+    return s.indexOf('llegaron') === -1 && s.indexOf('no show') === -1 && s !== 'cancelada';
+  }).length;
+  document.getElementById('badgeUpcoming').textContent = classified.upcoming.length;
+  var pendingBadge = document.getElementById('badgePending');
+  pendingBadge.textContent = classified.pending.length;
+  if (classified.pending.length > 0) pendingBadge.classList.add('orange');
+  else pendingBadge.classList.remove('orange');
+
+  // Update stats
+  updateStats(classified.today);
+
+  // Render current tab
+  var content = document.getElementById('content');
+  if (currentTab === 'today') content.innerHTML = renderTodayView(classified.today);
+  else if (currentTab === 'upcoming') content.innerHTML = renderUpcomingView(classified.upcoming);
+  else content.innerHTML = renderPendingView(classified.pending);
+}
+
+// ═══════════════════════════════════════════
+// TABS
+// ═══════════════════════════════════════════
+function switchTab(tab) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+  document.querySelector('.tab[data-tab="' + tab + '"]').classList.add('active');
+  updateAll();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ═══════════════════════════════════════════
+// SEARCH
+// ═══════════════════════════════════════════
+// ═══════════════════════════════════════════
+// ACTIONS
+// ═══════════════════════════════════════════
+async function markStatus(row, status) {
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ action: 'updateStatus', row: row, status: status })
+    });
+    // Optimistic update
+    for (var i = 0; i < allReservations.length; i++) {
+      if (allReservations[i].row === row) {
+        allReservations[i].status = status;
+        break;
+      }
+    }
+    updateAll();
+  } catch (e) {
+    console.error(e);
+  }
+}
+
+// ═══════════════════════════════════════════
+// MANUAL MODAL
+// ═══════════════════════════════════════════
+function openManualModal() {
+  var today = new Date();
+  var y = today.getFullYear();
+  var m = String(today.getMonth() + 1).padStart(2, '0');
+  var d = String(today.getDate()).padStart(2, '0');
+  document.getElementById('mFecha').value = y + '-' + m + '-' + d;
+  document.getElementById('manualModal').classList.add('show');
+}
+
+function closeManualModal() {
+  document.getElementById('manualModal').classList.remove('show');
+  ['mNombre', 'mTelefono', 'mHora', 'mNotas'].forEach(function(id) {
+    document.getElementById(id).value = '';
+  });
+  document.getElementById('mPersonas').value = 2;
+  document.getElementById('mZona').value = 'Sin preferencia';
+}
+
+function closeIfOverlay(event) {
+  if (event.target.id === 'manualModal') closeManualModal();
+}
+
+async function saveManual() {
+  var nombre = document.getElementById('mNombre').value.trim();
+  var telefono = document.getElementById('mTelefono').value.trim();
+  var fecha = document.getElementById('mFecha').value;
+  var hora = document.getElementById('mHora').value;
+  var personas = document.getElementById('mPersonas').value;
+  var zona = document.getElementById('mZona').value;
+  var notas = document.getElementById('mNotas').value.trim();
+
+  if (!nombre || !telefono || !fecha || !hora || !personas) {
+    alert('Por favor completa todos los campos requeridos');
+    return;
+  }
+
+  // Format date to Spanish
+  var [y, m, d] = fecha.split('-').map(Number);
+  var dateObj = new Date(y, m - 1, d);
+  var fechaTexto = formatDateLabel(dateObj);
+
+  // Format time to 12h
+  var [hh, mm] = hora.split(':').map(Number);
+  var ampm = hh >= 12 ? 'pm' : 'am';
+  var h12 = hh % 12 === 0 ? 12 : hh % 12;
+  var horaTexto = h12 + ':' + String(mm).padStart(2, '0') + ' ' + ampm;
+
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'addManual',
+        fechaEnvio: new Date().toLocaleString('es-MX', { timeZone: 'America/Mexico_City' }),
+        nombre: nombre,
+        telefono: telefono,
+        fechaReserva: fechaTexto,
+        hora: horaTexto,
+        personas: personas,
+        zona: zona,
+        notas: notas ? '(Manual) ' + notas : '(Manual)',
+        status: 'Confirmada'
+      })
+    });
+    closeManualModal();
+    setTimeout(fetchReservations, 1500);
+  } catch (e) {
+    console.error(e);
+    alert('Error al guardar. Intenta de nuevo.');
+  }
+}
+
+// ═══════════════════════════════════════════
+// REFRESH
+// ═══════════════════════════════════════════
+function refreshNow() {
+  var btn = event.target;
+  btn.textContent = '↻ Refrescando...';
+  fetchReservations().finally(function() {
+    setTimeout(function() { btn.textContent = '↻ Refrescar'; }, 500);
+  });
+}
+
+// Initial load
+fetchReservations();
+// Auto-refresh every 30s
+refreshInterval = setInterval(fetchReservations, 30000);
+// Update countdowns every minute (without refetch)
+setInterval(function() { if (allReservations.length > 0) updateAll(); }, 60000);
+</script>
+
+</body>
+</html>
